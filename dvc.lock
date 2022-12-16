@@ -1,0 +1,28 @@
+schema: '2.0'
+stages:
+  download_data:
+    cmd: sh download_valentini_set.sh
+    deps:
+    - path: download_valentini_set.sh
+      md5: e7cac1d7dace770e0ca8107762d2a31a
+      size: 671
+    outs:
+    - path: raw_data/
+      md5: d751713988987e9331980363e24189ce.dir
+      size: 0
+      nfiles: 0
+  preprocess_data:
+    cmd: sh preprocess_valentini_set.sh
+    deps:
+    - path: preprocess_valentini_set.sh
+      md5: 603c3f14492f3cc911677f4bfe2b1cc9
+      size: 780
+    - path: raw_data/
+      md5: 0f7070f56cddb03cb44a7f7b616a3d9d.dir
+      size: 5641173398
+      nfiles: 4
+    outs:
+    - path: valentini/
+      md5: 34b2fbbb39cece63feede0cb0ab599ae.dir
+      size: 6893247120
+      nfiles: 24796

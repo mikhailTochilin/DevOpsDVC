@@ -1,0 +1,5 @@
+include *.md
+include setup.cfg
+include *.txt
+include train.py
+recursive-include conf *.yaml

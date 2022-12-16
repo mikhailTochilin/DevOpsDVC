@@ -1,0 +1,42 @@
+stages:
+  download_data:
+    cmd: sh download_valentini_set.sh
+    deps:
+    - download_valentini_set.sh
+    outs:
+    - raw_data/
+  preprocess_data:
+    cmd: sh preprocess_valentini_set.sh
+    deps:
+    - preprocess_valentini_set.sh
+    - raw_data/
+    outs:
+    - valentini/
+  train:
+    cmd: python3.8 train.py
+    deps:
+    - conf/config.yaml
+    - train.py
+    - valentini/
+    outs:
+    - outputs/
+  enhance:
+    cmd: python3.8 enhance.py
+    deps:
+    - enhance.py
+    - outputs/
+    params:
+    - conf/config.yaml:
+      - dset.noisy_dir
+    outs:
+    - enhanced/
+  evaluate:
+    cmd: python3.8 evaluate.py
+    deps:
+    - evaluate.py
+    - outputs/
+    params:
+    - conf/config.yaml:
+      - dset.test
+    metrics:
+    - metrics.json

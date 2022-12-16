@@ -1,0 +1,11 @@
+hydra_core==0.11.3
+hydra_colorlog==0.1.4
+julius==0.2.2
+numpy
+pystoi==0.3.3
+six
+dvc
+sounddevice==0.4.0
+torchaudio==0.6.0
+# torch==1.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html
+
